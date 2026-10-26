@@ -33,9 +33,9 @@ export const uploadFile = async (req, res) => {
         const file = await File.create({
             fileName,
             fileURL: result.secure_url,
-            createdBy: req.User._id
+            createdBy: req.user._id
         })
-        await User.findByIdAndUpdate(req.User._id, {
+        await User.findByIdAndUpdate(req.user._id, {
 
             $push: {
                 files: file._id
